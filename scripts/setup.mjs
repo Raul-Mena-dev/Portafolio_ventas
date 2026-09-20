@@ -1,3 +1,3 @@
 import{spawnSync}from'node:child_process';import{resolve}from'node:path';import{fileURLToPath}from'node:url';import{demos}from'./demos.mjs';
 const root=fileURLToPath(new URL('..',import.meta.url));
-for(const[,folder]of demos){console.log(`Instalando ${folder}`);const r=spawnSync(process.platform==='win32'?'npm.cmd':'npm',['ci'],{cwd:resolve(root,folder),stdio:'inherit',shell:process.platform==='win32'});if(r.status)process.exit(r.status);}
+for(const[,folder]of demos){console.log(`Instalando ${folder}`);const r=spawnSync(process.platform==='win32'?'npm.cmd':'npm',['ci','--include=dev'],{cwd:resolve(root,folder),stdio:'inherit',shell:process.platform==='win32'});if(r.error){console.error(`No se pudo instalar ${folder}:`,r.error.message);process.exit(1);}if(r.status!==0)process.exit(r.status??1);}

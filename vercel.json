@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci && node scripts/setup.mjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/demo/lumina-studio/:path*", "destination": "/demo/lumina-studio/index.html" },
+    { "source": "/demo/brasa-norte/:path*", "destination": "/demo/brasa-norte/index.html" },
+    { "source": "/demo/petcare/:path*", "destination": "/demo/petcare/index.html" },
+    { "source": "/demo/iron-district/:path*", "destination": "/demo/iron-district/index.html" },
+    { "source": "/demo/novadent/:path*", "destination": "/demo/novadent/index.html" },
+    { "source": "/demo/casa-raiz/:path*", "destination": "/demo/casa-raiz/index.html" },
+    { "source": "/demo/pixel-forge/:path*", "destination": "/demo/pixel-forge/index.html" },
+    { "source": "/demo/eduflow/:path*", "destination": "/demo/eduflow/index.html" },
+    { "source": "/demo/motofix/:path*", "destination": "/demo/motofix/index.html" },
+    { "source": "/demo/flora-market/:path*", "destination": "/demo/flora-market/index.html" },
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
+}

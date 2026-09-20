@@ -44,6 +44,14 @@ Incluye recursos y enlaces de diez demos, recarga profunda, login ficticio, camb
 
 ## Publicación
 
+### Vercel
+
+Importar el repositorio con **Root Directory = raíz del repositorio** (no `portal/`). `vercel.json` configura la instalación de dependencias de la raíz y de cada demo usando sus lockfiles, la compilación general y la salida `dist`. No es necesario ejecutar el servidor Node en Vercel.
+
+Las reglas de reescritura conservan las rutas internas de las diez demos y dejan el fallback del portal al final. Los archivos estáticos existentes se sirven antes de las reescrituras. Tras subir los cambios, desplegar el nuevo commit; redesplegar `50c914f` repetirá el error de fuentes faltantes. No marcar las fuentes como dependencias externas: deben instalarse y empaquetarse.
+
+### Otros servidores
+
 El resultado está en `dist/`. Para usar un servidor Node, `npm run preview` sirve esta carpeta. En un hosting estático es indispensable configurar primero archivos existentes, después `/demo/<slug>/*` → `/demo/<slug>/index.html`, y finalmente rutas del portal → `/index.html`. No usar un único fallback general para las demos. El servidor Node incluye metadatos de fichas en el HTML; un hosting estático necesita prerenderizado equivalente para previews sociales por ficha.
 
 No hay backend productivo, pagos ni autenticación real. Las empresas y los datos de las demos son ficticios. Las capacidades de APIs y bases de datos se ofrecen como servicios; no se presentan como integraciones implementadas en estas demos.

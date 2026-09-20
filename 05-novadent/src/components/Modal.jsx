@@ -1,0 +1,3 @@
+import { useEffect,useRef } from "react";
+import { X } from "lucide-react";
+export default function Modal({title,onClose,children,className=""}){const close=useRef();useEffect(()=>{close.current?.focus();const key=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",key);return()=>document.removeEventListener("keydown",key)},[onClose]);return <div className="modal-backdrop" onMouseDown={e=>e.target===e.currentTarget&&onClose()}><section className={`modal ${className}`} role="dialog" aria-modal="true" aria-labelledby="modal-title"><button ref={close} className="modal-close" onClick={onClose} aria-label="Cerrar modal"><X/></button><h2 id="modal-title">{title}</h2>{children}</section></div>}

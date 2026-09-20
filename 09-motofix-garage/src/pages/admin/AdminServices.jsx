@@ -1,0 +1,2 @@
+import{services}from"../../data/garage";
+export default function AdminServices(){return <div className="admin-page"><div className="admin-title"><div><p className="eyebrow">CATÁLOGO</p><h1>Servicios</h1><p>Servicios disponibles para cotización en el sitio público.</p></div></div><div className="admin-services">{services.map((s,i)=>{const Icon=s.icon;return <article key={s.id}><span><Icon/></span><div><small>SV-{String(i+1).padStart(2,"0")}</small><h2>{s.name}</h2><p>{s.summary}</p><b>{s.from}</b></div><em>Activo</em></article>})}</div></div>}

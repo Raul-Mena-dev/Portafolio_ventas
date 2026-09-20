@@ -1,0 +1,1 @@
+import{Link}from"react-router-dom";export default function Brand(){return <Link className="brand" to="/" aria-label="Pixel Forge home"><span className="brand-glyph" aria-hidden="true"><i/><i/><i/><i/></span><span>PIXEL<b>FORGE</b><small>INDEPENDENT GAME STUDIO</small></span></Link>}

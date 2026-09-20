@@ -1,0 +1,1 @@
+export default function PropertyPhoto({property,className="",label}){return <div className={`property-photo sheet-${property.sheet} pos-${property.pos} ${className}`} role="img" aria-label={label||`${property.name} en ${property.location}`}><span>CASA RAÍZ</span></div>}

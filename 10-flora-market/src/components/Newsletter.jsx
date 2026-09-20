@@ -1,0 +1,2 @@
+import {useState} from 'react';
+export default function Newsletter(){const[sent,setSent]=useState(false);return <><form onSubmit={e=>{e.preventDefault();setSent(true);e.currentTarget.reset()}}><input type="email" required placeholder="Tu correo" aria-label="Correo para boletín"/><button aria-label="Suscribirse al boletín">→</button></form>{sent&&<small role="status">¡Gracias! Suscripción simulada. No enviamos tu correo.</small>}</>}

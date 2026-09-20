@@ -1,0 +1,1 @@
+import{Link}from"react-router-dom";export default function Brand(){return <Link className="brand" to="/" aria-label="Casa Raíz, inicio"><span className="brand-icon" aria-hidden="true"><i/><i/></span><span>CASA <b>RAÍZ</b><small>BIENES RAÍCES</small></span></Link>}

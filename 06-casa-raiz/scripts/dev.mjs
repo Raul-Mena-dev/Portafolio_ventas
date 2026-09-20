@@ -1,0 +1,1 @@
+import{realpathSync}from"node:fs";import{spawn}from"node:child_process";const cwd=realpathSync(process.cwd());const child=spawn(process.execPath,[realpathSync("node_modules/vite/bin/vite.js"),"--host","127.0.0.1","--port","5178"],{cwd,stdio:"inherit"});child.on("exit",code=>process.exit(code??0));

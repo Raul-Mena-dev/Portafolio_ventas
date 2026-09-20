@@ -1,0 +1,1 @@
+export default function GameVisual({game,kind="art",className="",label}){return <div className={`game-visual ${kind} pos-${game.pos} ${className}`} role="img" aria-label={label||`${game.title} ${kind==="art"?"key art":"gameplay scene"}`}><span>IMAGE SIGNAL LOST</span></div>}

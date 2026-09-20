@@ -1,0 +1,1 @@
+export default function CourseVisual({course,className=""}){return <div className={`course-visual sheet-${course.sheet} pos-${course.pos} ${className}`} role="img" aria-label={`Ilustración del curso ${course.title}`}><span>EF</span></div>}

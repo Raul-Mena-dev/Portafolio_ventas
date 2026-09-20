@@ -1,0 +1,24 @@
+const lessonSets={
+ react:["Bienvenida y entorno","Pensar en componentes","JSX sin misterio","Props y composición","Estado con useState","Eventos y formularios","Efectos con intención","Proyecto: tablero de hábitos","Publicación y siguientes pasos"],
+ ui:["Fundamentos visuales","Jerarquía y ritmo","Color accesible","Tipografía de interfaz","Componentes consistentes","Prototipo navegable","Entrega a desarrollo","Caso final: app financiera"],
+ blender:["Conoce la interfaz","Navegación 3D","Modelado con primitivas","Modificadores esenciales","Materiales básicos","Luz y cámara","Render final"],
+ marketing:["Estrategia y objetivos","Audiencias reales","Canales digitales","Contenido que convierte","Métricas esenciales","Campaña integrada"],
+ javascript:["El lenguaje hoy","Variables y tipos","Funciones útiles","Arrays y objetos","DOM moderno","Asincronía","Módulos","Proyecto final"],
+ python:["Tu primer programa","Datos y variables","Condiciones","Bucles","Funciones","Colecciones","Archivos","Proyecto de datos"],
+ photo:["Concepto de producto","Cámara y exposición","Iluminación casera","Composición","Fondos y props","Edición eficiente","Sesión final"],
+ excel:["Ordenar información","Fórmulas clave","Tablas inteligentes","Gráficas claras","Buscar y cruzar datos","Dashboard ejecutivo"]
+};
+const makeModules=(key)=>[{title:"Comienza",lessons:lessonSets[key].slice(0,3)},{title:"Construye",lessons:lessonSets[key].slice(3,6)},{title:"Aplica",lessons:lessonSets[key].slice(6)}].filter(m=>m.lessons.length);
+export const courses=[
+ {id:"react-desde-cero",key:"react",title:"React desde cero",category:"Desarrollo",teacher:"Marina López",duration:"12 h",level:"Principiante",students:2840,rating:4.9,sheet:"a",pos:"tl",description:"Aprende a construir interfaces modernas desde los fundamentos hasta una aplicación publicada.",accent:"#3559E0",modules:makeModules("react")},
+ {id:"diseno-ui",key:"ui",title:"Diseño UI",category:"Diseño",teacher:"Sofía Ríos",duration:"10 h",level:"Intermedio",students:1920,rating:4.8,sheet:"a",pos:"tr",description:"Diseña interfaces claras, consistentes y listas para convertirse en productos reales.",accent:"#8B5CF6",modules:makeModules("ui")},
+ {id:"blender-basico",key:"blender",title:"Blender básico",category:"3D",teacher:"Diego Kim",duration:"9 h",level:"Principiante",students:1435,rating:4.7,sheet:"a",pos:"bl",description:"Crea tu primera escena 3D dominando modelado, materiales, iluminación y render.",accent:"#F97356",modules:makeModules("blender")},
+ {id:"marketing-digital",key:"marketing",title:"Marketing digital",category:"Negocios",teacher:"Renata Cruz",duration:"8 h",level:"Principiante",students:3210,rating:4.9,sheet:"a",pos:"br",description:"Diseña campañas conectadas con objetivos, audiencias y métricas que sí importan.",accent:"#0EA5A6",modules:makeModules("marketing")},
+ {id:"javascript-moderno",key:"javascript",title:"JavaScript moderno",category:"Desarrollo",teacher:"Álex Torres",duration:"14 h",level:"Intermedio",students:2450,rating:4.8,sheet:"b",pos:"tl",description:"Comprende JavaScript actual y úsalo para crear experiencias web sólidas y mantenibles.",accent:"#F1B928",modules:makeModules("javascript")},
+ {id:"python-intro",key:"python",title:"Introducción a Python",category:"Desarrollo",teacher:"Camila Fuentes",duration:"11 h",level:"Principiante",students:3670,rating:4.9,sheet:"b",pos:"tr",description:"Da tus primeros pasos en programación resolviendo problemas prácticos con Python.",accent:"#3C82F6",modules:makeModules("python")},
+ {id:"fotografia-producto",key:"photo",title:"Fotografía de producto",category:"Creatividad",teacher:"Nora Silva",duration:"7 h",level:"Principiante",students:980,rating:4.8,sheet:"b",pos:"bl",description:"Produce imágenes de catálogo atractivas con equipo accesible y un flujo sencillo.",accent:"#EC766B",modules:makeModules("photo")},
+ {id:"excel-negocios",key:"excel",title:"Excel para negocios",category:"Negocios",teacher:"Carlos Vega",duration:"8 h",level:"Intermedio",students:4160,rating:4.9,sheet:"b",pos:"br",description:"Convierte datos cotidianos en reportes y decisiones con herramientas esenciales.",accent:"#2CA876",modules:makeModules("excel")}
+];
+export const lessonIds=course=>course.modules.flatMap((m,mi)=>m.lessons.map((_,li)=>`${mi}-${li}`));
+export const seedProgress={"react-desde-cero":["0-0","0-1","0-2","1-0","1-1","1-2"],"diseno-ui":["0-0","0-1","0-2"],"blender-basico":["0-0"]};
+export const progressFor=(course,progress)=>{const current=progress[course.id]?.length||0,seed=seedProgress[course.id]?.length||0,base={"react-desde-cero":72,"diseno-ui":40,"blender-basico":18}[course.id]||0,total=lessonIds(course).length;if(!seed)return Math.round(current/total*100);if(current===seed)return base;return Math.max(0,Math.min(100,Math.round(base+(current-seed)*((100-base)/(total-seed)))))};

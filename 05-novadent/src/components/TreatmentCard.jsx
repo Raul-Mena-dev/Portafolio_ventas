@@ -1,0 +1,2 @@
+import { ArrowUpRight } from "lucide-react";
+export default function TreatmentCard({item,index}){const Icon=item.icon;return <article className="treatment-card"><span className="treatment-number">0{index+1}</span><Icon className="treatment-icon"/><h3>{item.name}</h3><p>{item.summary}</p><div><span>{item.duration}</span><strong>{item.price}</strong></div><ArrowUpRight className="corner-arrow" aria-hidden="true"/></article>}

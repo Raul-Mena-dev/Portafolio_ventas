@@ -1,0 +1,10 @@
+const slug=location.pathname.split('/')[2];
+const host=document.createElement('mecha-demo-bar');host.style.cssText='position:fixed;inset:auto 0 0;z-index:2147483647;display:block;height:52px';
+const shadow=host.attachShadow({mode:'open'});
+shadow.innerHTML=`<style>:host{font:12px Arial,sans-serif;color:#e6eaf1}nav{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;height:52px;padding:8px 24px;background:#111b2a;border-top:1px solid #ffffff25}a{color:#fff;text-decoration:none;padding:8px;border-radius:4px}a:last-child{background:#d4f06f;color:#172319;font-weight:bold}a:focus-visible{outline:2px solid white}span{color:#b8c3d2}@media(max-width:540px){nav{padding:6px 10px;font-size:11px}span{display:none}}</style><nav aria-label="Navegación del portafolio"><a href="/portafolio/${slug}">← Volver al portafolio</a><span>Mecha Station Lab · Proyecto demostrativo</span><a href="/contacto?project=${slug}">Quiero algo similar ↗</a></nav>`;
+document.body.append(host);const space=document.createElement('div');space.style.height='52px';space.setAttribute('aria-hidden','true');document.body.append(space);
+// Integration-only adjustments: reserve the bar in overlays without changing demo sources.
+const adjusted=new WeakSet();let pending=false;
+function reserveSpace(){pending=false;for(const element of document.querySelectorAll('#root *')){if(adjusted.has(element))continue;const style=getComputedStyle(element);if(style.position!=='fixed')continue;const bottom=parseFloat(style.bottom);if(Number.isFinite(bottom)&&bottom>=0&&bottom<52){element.style.bottom=`${bottom+52}px`;element.style.maxHeight='calc(100dvh - 52px)';adjusted.add(element);}else if(parseFloat(style.height)>=innerHeight-1){element.style.maxHeight='calc(100dvh - 52px)';adjusted.add(element);}}}
+function schedule(){if(!pending){pending=true;requestAnimationFrame(reserveSpace)}}
+new MutationObserver(schedule).observe(document.getElementById('root'),{childList:true,subtree:true});addEventListener('resize',schedule);schedule();

@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {demos} from './demos.mjs';
 import {projects} from '../portal/src/portfolio/data/projects.js';
 const root=realpathSync(fileURLToPath(new URL('..',import.meta.url)));const dist=resolve(root,'dist');
-if(!existsSync(resolve(dist,'demo/flora-market/index.html'))){const r=spawnSync(process.execPath,[resolve(root,'scripts/build.mjs')],{cwd:root,stdio:'inherit'});if(r.status)process.exit(r.status);}
+if(!existsSync(resolve(dist,'demo/carnitas-don-chuy/index.html'))){const r=spawnSync(process.execPath,[resolve(root,'scripts/build.mjs')],{cwd:root,stdio:'inherit'});if(r.status)process.exit(r.status);}
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.svg':'image/svg+xml','.woff':'font/woff','.woff2':'font/woff2','.json':'application/json'};
 const escape=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 createServer(async(req,res)=>{try{const url=new URL(req.url,'http://localhost'),path=decodeURIComponent(url.pathname);const match=path.match(/^\/demo\/([^/]+)(?:\/|$)/);const demo=match&&demos.find(d=>d[0]===match[1]);if(match&&!demo){res.writeHead(404);res.end('Demo no encontrada');return;}if(demo&&path===`/demo/${demo[0]}`){res.writeHead(302,{Location:path+'/'+url.search});res.end();return;}

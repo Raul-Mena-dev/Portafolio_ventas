@@ -1,12 +1,12 @@
 # Mecha Station Lab — Portal de servicios
 
-Sitio comercial de desarrollo web con diez demos independientes, fichas de proyecto, filtros y contacto simulado.
+Sitio comercial de desarrollo web con quince demos independientes, fichas de proyecto, filtros y contacto simulado.
 
 ## Ejecutar
 
 ```sh
 npm install
-# En una copia nueva, instalar también las dependencias de las diez demos:
+# En una copia nueva, instalar también las dependencias de las demos:
 node scripts/setup.mjs
 npm run build
 npm run dev
@@ -17,8 +17,8 @@ Dirección local: http://127.0.0.1:5183. Cada demo conserva sus comandos y puert
 ## Arquitectura
 
 - `portal/src/portfolio`: componentes, páginas, estilos y datos del sitio principal.
-- `portal/src/portfolio/data/projects.js`: fuente única de las diez fichas.
-- `01-*` a `10-*`: aplicaciones existentes, sin cambios en sus fuentes.
+- `portal/src/portfolio/data/projects.js`: fuente única de las quince fichas.
+- `01-*` a `10-*`: aplicaciones originales; `11-menu-collection` contiene cinco menús gastronómicos configurables.
 - `scripts/build.mjs`: compila cada aplicación en `dist/demo/<slug>`. Un adaptador de compilación establece el basename y las rutas de imágenes, e incorpora la DemoBar.
 - `portal/public/demo-bar.js`: barra encapsulada en Shadow DOM. Reserva espacio en overlays de las demos para mantener sus controles accesibles.
 - `scripts/serve.mjs`: servidor Node de archivos estáticos con fallback por aplicación, rutas profundas y metadatos por ficha.
@@ -30,7 +30,7 @@ Las demos se abren como documentos independientes. Sus estilos y bundles nunca s
 
 `/`, `/servicios`, `/portafolio`, `/portafolio/:slug`, `/contacto`.
 
-Demos: `/demo/lumina-studio/`, `/demo/brasa-norte/`, `/demo/petcare/`, `/demo/iron-district/`, `/demo/novadent/`, `/demo/casa-raiz/`, `/demo/pixel-forge/`, `/demo/eduflow/`, `/demo/motofix/`, `/demo/flora-market/`.
+Demos: `/demo/lumina-studio/`, `/demo/brasa-norte/`, `/demo/petcare/`, `/demo/iron-district/`, `/demo/novadent/`, `/demo/casa-raiz/`, `/demo/pixel-forge/`, `/demo/eduflow/`, `/demo/motofix/`, `/demo/flora-market/`, `/demo/cocina-catrina/`, `/demo/pulpo-loco/`, `/demo/tavola-nonna/`, `/demo/taco-barrio/` y `/demo/carnitas-don-chuy/`.
 
 Se conservan rutas internas, por ejemplo `/demo/novadent/admin/patients`. El CTA de cada ficha dirige a `/contacto?project=<slug>` y prepara un mensaje editable. El formulario no envía ni persiste datos.
 
@@ -40,7 +40,7 @@ Se conservan rutas internas, por ejemplo `/demo/novadent/admin/patients`. El CTA
 npm test
 ```
 
-Incluye recursos y enlaces de diez demos, recarga profunda, login ficticio, cambios de órdenes, carrito, formulario, filtros, 404, metadatos y responsive. Capturas en `qa/`.
+Incluye recursos y enlaces de quince demos, recarga profunda, login ficticio, cambios de órdenes, carritos, formulario, filtros, 404, metadatos y responsive. Capturas en `qa/`.
 
 ## Publicación
 

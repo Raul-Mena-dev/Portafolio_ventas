@@ -15,6 +15,11 @@
     { "source": "/demo/eduflow/:path*", "destination": "/demo/eduflow/index.html" },
     { "source": "/demo/motofix/:path*", "destination": "/demo/motofix/index.html" },
     { "source": "/demo/flora-market/:path*", "destination": "/demo/flora-market/index.html" },
+    { "source": "/demo/cocina-catrina/:path*", "destination": "/demo/cocina-catrina/index.html" },
+    { "source": "/demo/pulpo-loco/:path*", "destination": "/demo/pulpo-loco/index.html" },
+    { "source": "/demo/tavola-nonna/:path*", "destination": "/demo/tavola-nonna/index.html" },
+    { "source": "/demo/taco-barrio/:path*", "destination": "/demo/taco-barrio/index.html" },
+    { "source": "/demo/carnitas-don-chuy/:path*", "destination": "/demo/carnitas-don-chuy/index.html" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
